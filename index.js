@@ -8,7 +8,7 @@ const express = require("express");
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json()); // PARA O CONSEGUIRMOS LER JSON
 
 app.get("/", (req, res) => {
   res.json({

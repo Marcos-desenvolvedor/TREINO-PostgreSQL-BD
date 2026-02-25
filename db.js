@@ -34,12 +34,8 @@ async function selecetCustomers() {
 
 async function insertCustomers(customer) {
   const client = await connect();
-  const sql = "INSERT INTO clientes(nome, idade, uf) VALUES ($1, $2, $3)";
-  const res = await client.query(sql, [
-    customer.nome,
-    customer.idade,
-    customer.uf,
-  ]);
+  const sql = "INSERT INTO clientes(nome, email) VALUES ($1, $2)";
+  const res = await client.query(sql, [customer.nome, customer.email]);
 }
 
 module.exports = { selecetCustomers, insertCustomers };
