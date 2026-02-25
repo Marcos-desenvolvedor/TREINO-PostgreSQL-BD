@@ -24,3 +24,22 @@ async function connect() {
 }
 
 connect();
+
+// SELECIONA OS USERS DO BD
+async function selecetCustomers() {
+  const client = await connect();
+  const res = await client.query("SELECT * FROM clientes");
+  return res.rows;
+}
+
+async function insertCustomers(customer) {
+  const client = await connect();
+  const sql = "INSERT INTO clientes(nome, idade, uf) VALUES ($1, $2, $3)";
+  const res = await client.query(sql, [
+    customer.nome,
+    customer.idade,
+    customer.uf,
+  ]);
+}
+
+module.exports = { selecetCustomers, insertCustomers };
