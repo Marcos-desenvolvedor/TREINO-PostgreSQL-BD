@@ -38,4 +38,15 @@ async function insertCustomers(customer) {
   const res = await client.query(sql, [customer.nome, customer.email]);
 }
 
-module.exports = { selecetCustomers, insertCustomers };
+async function updateCustomers(id, customer) {
+  const client = await connect();
+
+  const sql = "UPDATE clientes SET nome=$1, email=$2 WHERE id=$3";
+  const values = [customer.nome, customer.email, id];
+
+  const res = await client.query(sql, values);
+
+  // client.release();
+}
+
+module.exports = { selecetCustomers, insertCustomers, updateCustomers };

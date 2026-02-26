@@ -26,6 +26,11 @@ app.post("/clientes", async (req, res) => {
   res.sendStatus(201);
 });
 
+app.patch("/clientes/:id", async (req, res) => {
+  await db.updateCustomers(req.params.id, req.body);
+  res.sendStatus(200);
+});
+
 app.listen(port);
 
 console.log("Backend rodando");
