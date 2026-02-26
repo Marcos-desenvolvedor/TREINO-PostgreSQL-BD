@@ -31,6 +31,11 @@ app.patch("/clientes/:id", async (req, res) => {
   res.sendStatus(200);
 });
 
+app.delete("/clientes/:id", async (req, res) => {
+  await db.deleteCustomers(req.params.id);
+  res.sendStatus(204);
+});
+
 app.listen(port);
 
 console.log("Backend rodando");
